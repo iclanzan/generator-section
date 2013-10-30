@@ -1,4 +1,12 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.8'
+- '0.10'
+deploy:
+  provider: npm
+  email: sorin@iclanzan.com
+  api_key:
+    secure: DiTl7eG/qVXIzk2oCiGhAU3t8n3EV6P/iMeHDpznoiPaoEJ11lvqosQdnDNzGABEYGydu3lep/aLQ1fi9FV9NSbKVoIKUpKU70K9sRsc/auD6emAT6neNMIKPNd3TaO7CWbAxnvR68Cksn5lOPkuO3ZUtkzLRcDTBt2fsutO3gI=
+  on:
+    repo: iclanzan/generator-section
+    branch: master
