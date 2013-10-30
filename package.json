@@ -1,0 +1,39 @@
+{
+  "name": "generator-section",
+  "version": "0.1.0",
+  "description": "Generate a Section website.",
+  "keywords": [
+    "yeoman-generator",
+    "section"
+  ],
+  "homepage": "https://github.com/iclanzan/generator-section",
+  "bugs": "https://github.com/iclanzan/generator-section/issues",
+  "author": {
+    "name": "Sorin Iclanzan",
+    "email": "sorin@iclanzan.com",
+    "url": "https://github.com/iclanzan"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iclanzan/generator-section.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "peerDependencies": {
+    "yeoman-generator": "~0.13.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
