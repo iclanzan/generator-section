@@ -13,7 +13,7 @@ module.exports = function( grunt ) {
 
   var commonTasks = ['jshint', 'clean:temp', 'section'];
   var devTasks = ['less:dev', 'notify:success', 'connect:livereload', 'watch'];
-  var buildTasks = ['less:dist', 'clean:dist', 'imagemin', 'svgmin', 'htmlmin', 'copy:dist', 'uglify'];
+  var buildTasks = ['clean:dist', 'less:dist', 'imagemin', 'svgmin', 'htmlmin', 'copy:dist', 'uglify'];
 
   var contentDir = path.join(options.directories.content, '/');
   var assetsDir = path.join(options.directories.assets, '/');
@@ -108,9 +108,16 @@ module.exports = function( grunt ) {
       removeEmptyAttributes: true,
       removeOptionalTags: true
     },
-    dist: {
+    temp: {
       expand: true,
-      src: [tempOutput + '**/**.html', assetsDir + '**/**.html'],
+      cwd: tempOutput,
+      src: ['**/**.html'],
+      dest: outputDir
+    },
+    assets: {
+      expand: true,
+      cwd: assetsDir,
+      src: ['**/**.html'],
       dest: outputDir
     }
   };
@@ -119,7 +126,13 @@ module.exports = function( grunt ) {
     dist: {
       files: [{
         expand: true,
-        src: '{' + assetsDir + ', ' + tempOutput + '}**/**.{png,jpg,jpeg,gif}',
+        cwd: assetsDir,
+        src: '**/**.{png,jpg,jpeg,gif}',
+        dest: outputDir
+      }, {
+        expand: true,
+        cwd: tempOutput,
+        src: '**/**.{png,jpg,jpeg,gif}',
         dest: outputDir
       }]
     }
@@ -129,7 +142,13 @@ module.exports = function( grunt ) {
     dist: {
       files: [{
         expand: true,
-        src: '{' + assetsDir + ', ' + tempOutput + '}**/**.svg',
+        cwd: assetsDir,
+        src: '**/**.svg',
+        dest: outputDir
+      }, {
+        expand: true,
+        cwd: tempOutput,
+        src: '**/**.svg',
         dest: outputDir
       }]
     }
@@ -140,7 +159,7 @@ module.exports = function( grunt ) {
       src: stylesDir + 'index.less',
       dest: tempOutput + 'index.css'
     },
-    dest: {
+    dist: {
       options: {
         compress: true,
         cleancss: true
